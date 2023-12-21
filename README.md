@@ -1,3 +1,3 @@
-# Lina-Perez-Portfolio
+# Lina Perez Portfolio
 
 ### Heading 3
