@@ -1,0 +1,168 @@
+.app-galaxy {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: 
+    linear-gradient(135deg, rgba(45, 80, 22, 0.8) 0%, rgba(27, 58, 14, 0.85) 30%, rgba(13, 31, 7, 0.9) 70%),
+    url('./colombia.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  overflow-y: visible;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+
+.universe-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
+}
+
+.universe-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.galaxy-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+.stars-layer-1,
+.stars-layer-2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+}
+
+.stars-layer-1 {
+  background-image: 
+    radial-gradient(2px 1px at 20px 30px, #4A7C59, transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(106, 168, 79, 0.8), transparent),
+    radial-gradient(1px 2px at 50px 160px, rgba(139, 195, 74, 0.6), transparent);
+  background-size: 200px 200px;
+  animation: floatLeaves 300s linear infinite;
+}
+
+.stars-layer-2 {
+  background-image: 
+    radial-gradient(3px 2px at 150px 40px, rgba(76, 175, 80, 0.4), transparent),
+    radial-gradient(2px 1px at 100px 120px, rgba(129, 199, 132, 0.3), transparent);
+  background-size: 300px 300px;
+  animation: floatLeaves 400s linear infinite reverse;
+}
+
+@keyframes floatLeaves {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(-200px) rotate(360deg); }
+}
+
+
+.nebula-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at top left, rgba(255, 193, 7, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at bottom right, rgba(76, 175, 80, 0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at center, rgba(139, 195, 74, 0.04) 0%, transparent 50%);
+  animation: sunlightShift 80s ease-in-out infinite;
+}
+
+@keyframes sunlightShift {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+  33% { transform: scale(1.1) rotate(120deg); opacity: 0.8; }
+  66% { transform: scale(0.9) rotate(240deg); opacity: 0.4; }
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1B3A0E;
+  color: #E8F5E8;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+::selection {
+  background-color: rgba(76, 175, 80, 0.3);
+  color: #E8F5E8;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(45, 80, 22, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #66BB6A, #9CCC65);
+}
+
+
+*:focus-visible {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+} 

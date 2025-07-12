@@ -1,0 +1,333 @@
+.skills-flow-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background: transparent;
+  position: relative;
+}
+
+.skills-flow-header {
+  padding: 2rem;
+  z-index: 10;
+  text-align: center;
+}
+
+.skills-flow-header h1 {
+  margin: 0 0 1rem 0;
+  color: #E8F5E8;
+  font-size: 3rem;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 50%, #CDDC39 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(76, 175, 80, 0.4);
+}
+
+.skills-flow-header p {
+  margin: 0;
+  color: #C8E6C9;
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.skills-flow-wrapper {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 200px);
+  overflow: visible;
+  padding: 80px 60px;
+  box-sizing: border-box;
+}
+
+
+.react-flow {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: visible !important;
+}
+
+
+.react-flow__viewport {
+  overflow: visible !important;
+}
+
+.react-flow__renderer {
+  overflow: visible !important;
+}
+
+.react-flow__pane {
+  overflow: visible !important;
+}
+
+.react-flow__container {
+  overflow: visible !important;
+}
+
+.react-flow__selection {
+  overflow: visible !important;
+}
+
+.react-flow__node {
+  overflow: visible !important;
+  z-index: 1;
+}
+
+.react-flow__node:hover {
+  z-index: 999 !important;
+}
+
+.react-flow__nodes {
+  overflow: visible !important;
+}
+
+
+.reset-view-button {
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: rgba(62, 39, 35, 0.85);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(121, 85, 72, 0.6);
+  border-radius: 50%;
+  color: #4CAF50;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(160, 116, 98, 0.3);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset-view-button:hover {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: #66BB6A;
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 
+    0 6px 25px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(76, 175, 80, 0.4),
+    inset 0 1px 0 rgba(160, 116, 98, 0.4);
+}
+
+.reset-view-button:active {
+  transform: scale(0.95) rotate(-2deg);
+}
+
+
+.react-flow__minimap {
+  background: rgba(27, 58, 14, 0.8);
+  border: 2px solid rgba(76, 175, 80, 0.4);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(139, 195, 74, 0.2);
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(76, 175, 80, 0.2);
+  stroke: #4CAF50;
+  stroke-width: 2;
+}
+
+
+.react-flow__edge-path {
+  stroke: rgba(121, 85, 72, 0.8);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 4px rgba(62, 39, 35, 0.6));
+}
+
+.react-flow__edge.animated .react-flow__edge-path {
+
+}
+
+
+.react-flow__selection {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid #4CAF50;
+}
+
+
+.react-flow__panel {
+  background: rgba(62, 39, 35, 0.8);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(121, 85, 72, 0.6);
+  border-radius: 12px;
+  color: #E8F5E8;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: inset 0 1px 0 rgba(160, 116, 98, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .skills-flow-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .skills-flow-header h1 {
+    font-size: 2rem;
+  }
+  
+  .skills-flow-header p {
+    font-size: 1rem;
+  }
+  
+  .skills-flow-wrapper {
+    height: calc(100vh - 160px);
+    padding: 60px 40px;
+  }
+  
+  .reset-view-button {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    bottom: 3px;
+    left: 15px;
+  }
+  
+  /* Mobile floating cards */
+  .floating-info-card {
+    width: 250px;
+    padding: 15px;
+    font-size: 0.85rem;
+  }
+  
+  .floating-info-card.top-left,
+  .floating-info-card.top-right {
+    top: 10px;
+  }
+  
+  .floating-info-card.bottom-left {
+    bottom: 35px;
+  }
+  
+  .floating-info-card.bottom-right {
+    bottom: 10px;
+  }
+  
+  .floating-info-card.top-left,
+  .floating-info-card.bottom-left {
+    left: 10px;
+  }
+  
+  .floating-info-card.top-right,
+  .floating-info-card.bottom-right {
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-flow-wrapper {
+    padding: 40px 20px;
+  }
+  
+  .floating-info-card {
+    width: 200px;
+    padding: 12px;
+    font-size: 0.8rem;
+  }
+  
+  .card-header {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+}
+
+/* Floating Info Cards */
+.floating-info-card {
+  position: absolute;
+  width: 280px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(232, 245, 233, 0.9) 100%);
+  backdrop-filter: blur(15px) saturate(120%);
+  border: 2px solid rgba(76, 175, 80, 0.4);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(76, 175, 80, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  z-index: 5;
+  transition: all 0.3s ease;
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+.floating-info-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #4CAF50;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(76, 175, 80, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.floating-info-card.top-left {
+  top: 20px;
+  left: 20px;
+  animation-delay: 0s;
+}
+
+.floating-info-card.top-right {
+  top: 20px;
+  right: 20px;
+  animation-delay: 1.5s;
+}
+
+.floating-info-card.bottom-left {
+  bottom: 40px;
+  left: 20px;
+  animation-delay: 3s;
+}
+
+.floating-info-card.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  animation-delay: 4.5s;
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.card-header {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 12px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+  padding-bottom: 8px;
+}
+
+.card-content {
+  font-size: 0.9rem;
+  color: #1B5E20;
+  line-height: 1.5;
+  text-align: center;
+  font-weight: 500;
+}
+
+.card-content strong {
+  color: #2E7D32;
+  font-weight: 700;
+}
+
+.card-content em {
+  color: #689F38;
+  font-style: italic;
+} 

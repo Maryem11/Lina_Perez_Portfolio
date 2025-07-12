@@ -1,0 +1,365 @@
+/* Skill Node - Enhanced Leaf Theme */
+.skill-node {
+  width: 170px;
+  height: 130px;
+  border-radius: 15px 60px 25px 45px;
+  background: linear-gradient(135deg, 
+    rgba(139, 195, 74, 0.95) 0%, 
+    rgba(104, 159, 56, 0.9) 30%,
+    rgba(76, 175, 80, 0.85) 70%, 
+    rgba(56, 142, 60, 0.9) 100%);
+  backdrop-filter: blur(15px) saturate(120%);
+  border: none;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 25px rgba(76, 175, 80, 0.4),
+    inset 2px 2px 0 rgba(255, 255, 255, 0.3),
+    inset -2px -2px 0 rgba(46, 125, 50, 0.4);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transform-origin: bottom center;
+  
+  /* Advanced organic leaf texture */
+  background-image: 
+    /* Chlorophyll cells pattern */
+    radial-gradient(ellipse 3px 2px at 15% 25%, rgba(255, 255, 255, 0.4) 50%, transparent 50%),
+    radial-gradient(ellipse 2px 3px at 85% 75%, rgba(255, 255, 255, 0.3) 50%, transparent 50%),
+    radial-gradient(ellipse 4px 2px at 65% 15%, rgba(255, 255, 255, 0.25) 50%, transparent 50%),
+    radial-gradient(ellipse 2px 4px at 35% 85%, rgba(255, 255, 255, 0.3) 50%, transparent 50%),
+    /* Stomata (breathing pores) */
+    radial-gradient(circle at 25% 60%, rgba(46, 125, 50, 0.4) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 75% 40%, rgba(46, 125, 50, 0.3) 0.5px, transparent 0.5px),
+    /* Natural variation spots */
+    radial-gradient(circle at 45% 70%, rgba(139, 195, 74, 0.2) 2px, transparent 2px),
+    radial-gradient(circle at 80% 30%, rgba(104, 159, 56, 0.15) 1.5px, transparent 1.5px);
+}
+
+/* Remove vein system - keep clean leaf surface */
+
+/* Enhanced petiole (leaf stem) */
+.skill-node::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 25px;
+  background: linear-gradient(180deg, 
+    #689F38 0%, 
+    #558B2F 30%,
+    #6D4C41 70%, 
+    #5D4037 100%);
+  border-radius: 3px 3px 6px 6px;
+  box-shadow: 
+    0 0 8px rgba(93, 64, 55, 0.5),
+    inset 1px 0 0 rgba(139, 195, 74, 0.4),
+    inset -1px 0 0 rgba(46, 125, 50, 0.3);
+  
+  /* Add small ridges for texture */
+  background-image: 
+    repeating-linear-gradient(0deg,
+      transparent 0px,
+      rgba(46, 125, 50, 0.3) 1px,
+      transparent 2px);
+}
+
+.skill-node:hover {
+  transform: translateY(-12px) scale(1.08) rotate(2deg);
+  box-shadow: 
+    0 15px 50px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(139, 195, 74, 0.8),
+    inset 2px 2px 0 rgba(255, 255, 255, 0.4),
+    inset -2px -2px 0 rgba(46, 125, 50, 0.6);
+  animation: leafRustle 0.6s ease-in-out;
+  
+  /* Enhanced leaf glow with photosynthesis effect */
+  filter: 
+    drop-shadow(0 0 15px rgba(139, 195, 74, 0.6))
+    brightness(1.1)
+    saturate(1.2);
+    
+  /* Photosynthesis light absorption */
+  background-image: 
+    radial-gradient(ellipse at 30% 20%, rgba(255, 255, 0, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 80%, rgba(255, 255, 0, 0.08) 0%, transparent 35%),
+    var(--original-background-image);
+}
+
+/* Removed vein hover effect */
+
+@keyframes leafRustle {
+  0%, 100% { transform: translateY(-12px) scale(1.08) rotate(2deg); }
+  25% { transform: translateY(-12px) scale(1.08) rotate(-1deg); }
+  75% { transform: translateY(-12px) scale(1.08) rotate(3deg); }
+}
+
+.skill-node-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  padding: 4px;
+}
+
+.skill-node-header {
+  padding: 10px 8px 10px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #388E3C 0%, #2E7D32 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px 40px 8px 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Leaf shimmer effect */
+.skill-node-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.skill-node:hover .skill-node-header::before {
+  left: 100%;
+}
+
+.skill-node-header h3 {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  color: #E8F5E8;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.skill-node-body {
+  padding: 10px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px 8px 16px 40px;
+  margin: 2px;
+  margin-top: 0;
+  min-height: 0;
+  overflow: visible;
+}
+
+.skill-category {
+  font-size: 0.65rem;
+  color: #1B5E20;
+  background: rgba(232, 245, 233, 0.9);
+  border: 1px solid rgba(46, 125, 50, 0.4);
+  padding: 3px 8px;
+  border-radius: 25px;
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skill-experience {
+  font-size: 0.75rem;
+  color: #E8F5E8;
+  text-align: center;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.skill-experience::before {
+  content: '🌿';
+  font-size: 0.8rem;
+  filter: drop-shadow(0 0 4px rgba(76, 175, 80, 0.6));
+  animation: leafSway 3s ease-in-out infinite;
+}
+
+@keyframes leafSway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+/* React Flow Handles - Branch Connection Points */
+.react-flow__handle {
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle, #6D4C41 30%, #8D6E63 70%);
+  border: 2px solid rgba(121, 85, 72, 0.8);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 12px rgba(93, 64, 55, 0.6),
+    inset 0 1px 2px rgba(160, 116, 98, 0.4);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.react-flow__handle:hover {
+  transform: scale(1.3);
+  background: radial-gradient(circle, #5D4037 30%, #6D4C41 70%);
+  box-shadow: 
+    0 0 20px rgba(93, 64, 55, 0.8),
+    inset 0 1px 2px rgba(160, 116, 98, 0.6);
+}
+
+.react-flow__handle-top {
+  top: -7px;
+  background: radial-gradient(circle, #388E3C 30%, #4CAF50 70%);
+  border-color: rgba(46, 125, 50, 0.8);
+}
+
+.react-flow__handle-bottom {
+  bottom: -7px;
+}
+
+/* Enhanced natural decorations with insects */
+.skill-node-body::after {
+  content: '🌿🍃🐛';
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 0.6rem;
+  opacity: 0.7;
+  animation: leafFloat 6s ease-in-out infinite;
+  letter-spacing: 1px;
+  filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.4));
+}
+
+/* Add small dewdrops */
+.skill-node-body::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 12px;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 3px rgba(255, 255, 255, 0.5),
+    6px 8px 0 -2px rgba(255, 255, 255, 0.6),
+    12px 4px 0 -3px rgba(255, 255, 255, 0.4);
+  opacity: 0.8;
+  animation: dewdropShimmer 4s ease-in-out infinite;
+}
+
+@keyframes leafFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+  33% { transform: translateY(-2px) rotate(8deg); opacity: 0.9; }
+  66% { transform: translateY(-1px) rotate(-5deg); opacity: 0.8; }
+}
+
+@keyframes dewdropShimmer {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Add tiny insects and nature elements that move around */
+.skill-node:nth-child(odd)::before {
+  content: '🦋';
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  animation: butterflyVisit 8s ease-in-out infinite;
+  z-index: 5;
+}
+
+.skill-node:nth-child(even)::before {
+  content: '🐝';
+  position: absolute;
+  top: -12px;
+  left: -8px;
+  font-size: 0.7rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  animation: beeVisit 10s ease-in-out infinite;
+  z-index: 5;
+}
+
+@keyframes butterflyVisit {
+  0%, 90%, 100% { opacity: 0; transform: translateY(0px) rotate(0deg); }
+  5%, 15% { opacity: 0.8; transform: translateY(-5px) rotate(10deg); }
+  10% { opacity: 1; transform: translateY(-8px) rotate(-5deg); }
+}
+
+@keyframes beeVisit {
+  0%, 85%, 100% { opacity: 0; transform: translateX(0px) translateY(0px); }
+  10%, 20% { opacity: 0.9; transform: translateX(3px) translateY(-3px); }
+  15% { opacity: 1; transform: translateX(-2px) translateY(-5px); }
+}
+
+/* Add wind rustling effect */
+.skill-node {
+  animation: gentleBreeze 15s ease-in-out infinite;
+}
+
+@keyframes gentleBreeze {
+  0%, 100% { transform: translateX(0px) rotate(0deg); }
+  25% { transform: translateX(1px) rotate(0.5deg); }
+  50% { transform: translateX(-0.5px) rotate(-0.3deg); }
+  75% { transform: translateX(0.8px) rotate(0.2deg); }
+}
+
+/* Seasonal color variations based on proficiency level */
+.skill-node[data-proficiency="5"] {
+  background: linear-gradient(135deg, 
+    rgba(255, 193, 7, 0.9) 0%,     /* Golden autumn */
+    rgba(255, 152, 0, 0.8) 30%,
+    rgba(76, 175, 80, 0.85) 70%, 
+    rgba(56, 142, 60, 0.9) 100%);
+}
+
+.skill-node[data-proficiency="4"] {
+  background: linear-gradient(135deg, 
+    rgba(139, 195, 74, 0.95) 0%,   /* Fresh spring green */
+    rgba(104, 159, 56, 0.9) 30%,
+    rgba(76, 175, 80, 0.85) 70%, 
+    rgba(56, 142, 60, 0.9) 100%);
+}
+
+.skill-node[data-proficiency="3"] {
+  background: linear-gradient(135deg, 
+    rgba(129, 199, 132, 0.9) 0%,   /* Young leaf green */
+    rgba(104, 159, 56, 0.85) 30%,
+    rgba(76, 175, 80, 0.8) 70%, 
+    rgba(56, 142, 60, 0.85) 100%);
+} 
