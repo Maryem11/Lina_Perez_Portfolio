@@ -67,7 +67,7 @@ const FlowWithProvider: React.FC = () => {
   }, [setViewport, setNodes]);
 
   return (
-    <div className="desktop-flow-container">
+    <>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -75,39 +75,24 @@ const FlowWithProvider: React.FC = () => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodeTypes}
-        fitView={false}
-        defaultViewport={{ x: 200, y: -100, zoom: 0.95 }}
-        minZoom={0.5}
+        minZoom={0.2}
         maxZoom={1.5}
-        snapToGrid={true}
-        snapGrid={[15, 15]}
-        deleteKeyCode={null}
-        multiSelectionKeyCode={null}
-        selectionKeyCode={null}
-        panOnDrag={true}
-        zoomOnScroll={true}
-        zoomOnPinch={true}
-        panOnScroll={false}
-        preventScrolling={true}
-        nodesDraggable={false}
-        nodesConnectable={false}
-        elementsSelectable={false}
+        defaultViewport={{ x: 200, y: -100, zoom: 0.95 }}
       >
         <Background 
           variant={BackgroundVariant.Dots} 
           gap={20} 
-          size={1} 
-          color="rgba(76, 175, 80, 0.1)"
+          size={1}
+          color="rgba(76, 175, 80, 0.15)" 
         />
       </ReactFlow>
       
       <button 
-        className="reset-view-button" 
+        className="reset-view-button"
         onClick={handleResetView}
-        aria-label="Reset view to center"
-        title="Reset view"
+        title="Reset to Default Position"
       >
-        ⌂
+        🔁
       </button>
       
       {activeSkill && (
@@ -116,7 +101,7 @@ const FlowWithProvider: React.FC = () => {
           onClose={handleCloseModal} 
         />
       )}
-    </div>
+    </>
   );
 };
 
