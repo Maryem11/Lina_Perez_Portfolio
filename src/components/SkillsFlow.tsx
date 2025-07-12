@@ -17,6 +17,7 @@ import { initialNodes, initialEdges } from '../data/skillsData';
 import { SkillNode as SkillNodeType } from '../types';
 import SkillNode from './SkillNode';
 import SkillDetailsModal from './SkillDetailsModal';
+import MobileSkillsList from './MobileSkillsList';
 import './SkillsFlow.css';
 
 const FlowWithProvider: React.FC = () => {
@@ -66,7 +67,7 @@ const FlowWithProvider: React.FC = () => {
   }, [setViewport, setNodes]);
 
   return (
-    <>
+    <div className="desktop-flow-container">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -74,24 +75,39 @@ const FlowWithProvider: React.FC = () => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodeTypes}
-        minZoom={0.2}
-        maxZoom={1.5}
+        fitView={false}
         defaultViewport={{ x: 200, y: -100, zoom: 0.95 }}
+        minZoom={0.5}
+        maxZoom={1.5}
+        snapToGrid={true}
+        snapGrid={[15, 15]}
+        deleteKeyCode={null}
+        multiSelectionKeyCode={null}
+        selectionKeyCode={null}
+        panOnDrag={true}
+        zoomOnScroll={true}
+        zoomOnPinch={true}
+        panOnScroll={false}
+        preventScrolling={true}
+        nodesDraggable={false}
+        nodesConnectable={false}
+        elementsSelectable={false}
       >
         <Background 
           variant={BackgroundVariant.Dots} 
           gap={20} 
-          size={1}
-          color="rgba(76, 175, 80, 0.15)" 
+          size={1} 
+          color="rgba(76, 175, 80, 0.1)"
         />
       </ReactFlow>
       
       <button 
-        className="reset-view-button"
+        className="reset-view-button" 
         onClick={handleResetView}
-        title="Reset to Default Position"
+        aria-label="Reset view to center"
+        title="Reset view"
       >
-        🔁
+        ⌂
       </button>
       
       {activeSkill && (
@@ -100,51 +116,57 @@ const FlowWithProvider: React.FC = () => {
           onClose={handleCloseModal} 
         />
       )}
-    </>
+    </div>
   );
 };
 
 const SkillsFlow: React.FC = () => {
   return (
     <div className="skills-flow-container">
-      <div className="skills-flow-header">
-        <h1>Lina Perez-Romero</h1>
-        <p>Business Analytics Graduate • Data Enthusiast • Adventure Seeker</p>
+      {/* Desktop version */}
+      <div className="desktop-skills-flow">
+        <div className="skills-flow-header">
+          <h1>Lina Perez-Romero</h1>
+          <p>Business Analytics Graduate • Data Enthusiast • Adventure Seeker</p>
+        </div>
+        
+        <div className="skills-flow-wrapper">
+          <ReactFlowProvider>
+            <FlowWithProvider />
+          </ReactFlowProvider>
+          
+          <div className="floating-info-card top-left">
+            <div className="card-header">🎓 Education & Experience</div>
+            <div className="card-content">
+              MS in Business Analytics from San Francisco State University. 11+ years of experience in data analysis, business intelligence, and predictive modeling across healthcare and e-commerce domains.
+            </div>
+          </div>
+          
+          <div className="floating-info-card top-right">
+            <div className="card-header">💼 Professional Focus</div>
+            <div className="card-content">
+              <strong>Specializations:</strong> Machine Learning • Business Intelligence • Data Visualization • Predictive Analytics
+            </div>
+          </div>
+          
+          <div className="floating-info-card bottom-left">
+            <div className="card-header">🌍 Background</div>
+            <div className="card-content">
+              Originally from Colombia 🇨🇴, bringing diverse perspectives and cultural adaptability to data-driven problem solving and international business contexts.
+            </div>
+          </div>
+          
+          <div className="floating-info-card bottom-right">
+            <div className="card-header">🚀 Current Goals</div>
+            <div className="card-content">
+              Seeking Data Scientist/Data Analyst opportunities to apply machine learning and analytics expertise in solving complex business challenges.
+            </div>
+          </div>
+        </div>
       </div>
       
-      <div className="skills-flow-wrapper">
-        <ReactFlowProvider>
-          <FlowWithProvider />
-        </ReactFlowProvider>
-        
-        <div className="floating-info-card top-left">
-          <div className="card-header">🎓 Education & Experience</div>
-          <div className="card-content">
-            MS in Business Analytics from San Francisco State University. 5+ years of experience in data analysis, business intelligence, and predictive modeling across healthcare and e-commerce domains.
-          </div>
-        </div>
-        
-        <div className="floating-info-card top-right">
-          <div className="card-header">💼 Professional Focus</div>
-          <div className="card-content">
-            <strong>Specializations:</strong> Machine Learning • Business Intelligence • Data Visualization • Predictive Analytics
-          </div>
-        </div>
-        
-        <div className="floating-info-card bottom-left">
-          <div className="card-header">🌍 Background</div>
-          <div className="card-content">
-            Originally from Colombia 🇨🇴, bringing diverse perspectives and cultural adaptability to data-driven problem solving and international business contexts.
-          </div>
-        </div>
-        
-        <div className="floating-info-card bottom-right">
-          <div className="card-header">🚀 Current Goals</div>
-          <div className="card-content">
-            Seeking Data Scientist/Data Analyst opportunities to apply machine learning and analytics expertise in solving complex business challenges.
-          </div>
-        </div>
-      </div>
+      {/* Mobile version */}
+      <MobileSkillsList />
     </div>
   );
 };
