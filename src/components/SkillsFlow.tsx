@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import ReactFlow, {
   Background,
   useNodesState,
@@ -45,6 +45,54 @@ const FlowWithProvider: React.FC = () => {
     }))
   );
 
+  // Center the graph after component mounts
+  useEffect(() => {
+    const centerGraph = () => {
+      // Calculate the center of all nodes
+      const nodePositions = nodes.map(node => node.position);
+      const minX = Math.min(...nodePositions.map(pos => pos.x));
+      const maxX = Math.max(...nodePositions.map(pos => pos.x));
+      const minY = Math.min(...nodePositions.map(pos => pos.y));
+      const maxY = Math.max(...nodePositions.map(pos => pos.y));
+      
+      const centerX = (minX + maxX) / 2;
+      const centerY = (minY + maxY) / 2;
+      
+      // Get the container dimensions
+      const container = document.querySelector('.skills-flow-wrapper');
+      if (container) {
+        const containerRect = container.getBoundingClientRect();
+        const containerCenterX = containerRect.width / 2;
+        const containerCenterY = containerRect.height / 2;
+        
+        // Calculate the viewport offset to center the graph
+        const viewportX = containerCenterX - centerX;
+        const viewportY = containerCenterY - centerY;
+        
+        // Set the viewport with a slight delay to ensure React Flow is ready
+        setTimeout(() => {
+          setViewport({ x: viewportX, y: viewportY, zoom: 0.95 }, { duration: 800 });
+        }, 100);
+      }
+    };
+
+    // Center on mount and after a short delay to ensure everything is rendered
+    centerGraph();
+    const timer = setTimeout(centerGraph, 500);
+    
+    // Add resize listener to re-center on window resize
+    const handleResize = () => {
+      setTimeout(centerGraph, 100);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [nodes, setViewport]);
+
   const onConnect = useCallback(
     (params: Connection | Edge) => setEdges((eds) => addEdge({
       ...params,
@@ -63,7 +111,29 @@ const FlowWithProvider: React.FC = () => {
 
   const handleResetView = useCallback(() => {
     setNodes(initialNodes);
-    setViewport({ x: 200, y: -100, zoom: 0.95 }, { duration: 800 });
+    // Re-center the graph when reset is clicked
+    setTimeout(() => {
+      const nodePositions = initialNodes.map(node => node.position);
+      const minX = Math.min(...nodePositions.map(pos => pos.x));
+      const maxX = Math.max(...nodePositions.map(pos => pos.x));
+      const minY = Math.min(...nodePositions.map(pos => pos.y));
+      const maxY = Math.max(...nodePositions.map(pos => pos.y));
+      
+      const centerX = (minX + maxX) / 2;
+      const centerY = (minY + maxY) / 2;
+      
+      const container = document.querySelector('.skills-flow-wrapper');
+      if (container) {
+        const containerRect = container.getBoundingClientRect();
+        const containerCenterX = containerRect.width / 2;
+        const containerCenterY = containerRect.height / 2;
+        
+        const viewportX = containerCenterX - centerX;
+        const viewportY = containerCenterY - centerY;
+        
+        setViewport({ x: viewportX, y: viewportY, zoom: 0.95 }, { duration: 800 });
+      }
+    }, 100);
   }, [setViewport, setNodes]);
 
   return (
@@ -77,7 +147,8 @@ const FlowWithProvider: React.FC = () => {
         nodeTypes={nodeTypes}
         minZoom={0.2}
         maxZoom={1.5}
-        defaultViewport={{ x: 200, y: -100, zoom: 0.95 }}
+        fitView={false}
+        fitViewOptions={{ padding: 0.1 }}
       >
         <Background 
           variant={BackgroundVariant.Dots} 
