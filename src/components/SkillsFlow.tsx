@@ -62,10 +62,26 @@ const FlowWithProvider: React.FC = () => {
       const container = document.querySelector('.skills-flow-wrapper');
       if (container) {
         const containerRect = container.getBoundingClientRect();
-        const containerCenterX = containerRect.width / 2;
-        const containerCenterY = containerRect.height / 2;
         
-        // Calculate the viewport offset to center the graph
+        // Account for the wrapper padding (80px top/bottom, 60px left/right)
+        const paddingLeft = 60;
+        const paddingRight = 60;
+        const paddingTop = 80;
+        const paddingBottom = 80;
+        
+        // Account for floating cards (280px wide, positioned at corners)
+        const cardWidth = 280;
+        const cardMargin = 20; // Cards have 20px margin from edges
+        
+        // Calculate the available space for the graph (excluding padding and cards)
+        const availableWidth = containerRect.width - paddingLeft - paddingRight - (cardWidth + cardMargin) * 2;
+        const availableHeight = containerRect.height - paddingTop - paddingBottom;
+        
+        // Calculate the center of the available space
+        const containerCenterX = paddingLeft + cardWidth + cardMargin + (availableWidth / 2);
+        const containerCenterY = paddingTop + (availableHeight / 2);
+        
+        // Calculate the viewport offset to center the graph in the available space
         const viewportX = containerCenterX - centerX;
         const viewportY = containerCenterY - centerY;
         
@@ -125,8 +141,24 @@ const FlowWithProvider: React.FC = () => {
       const container = document.querySelector('.skills-flow-wrapper');
       if (container) {
         const containerRect = container.getBoundingClientRect();
-        const containerCenterX = containerRect.width / 2;
-        const containerCenterY = containerRect.height / 2;
+        
+        // Account for the wrapper padding (80px top/bottom, 60px left/right)
+        const paddingLeft = 60;
+        const paddingRight = 60;
+        const paddingTop = 80;
+        const paddingBottom = 80;
+        
+        // Account for floating cards (280px wide, positioned at corners)
+        const cardWidth = 280;
+        const cardMargin = 20; // Cards have 20px margin from edges
+        
+        // Calculate the available space for the graph (excluding padding and cards)
+        const availableWidth = containerRect.width - paddingLeft - paddingRight - (cardWidth + cardMargin) * 2;
+        const availableHeight = containerRect.height - paddingTop - paddingBottom;
+        
+        // Calculate the center of the available space
+        const containerCenterX = paddingLeft + cardWidth + cardMargin + (availableWidth / 2);
+        const containerCenterY = paddingTop + (availableHeight / 2);
         
         const viewportX = containerCenterX - centerX;
         const viewportY = containerCenterY - centerY;
