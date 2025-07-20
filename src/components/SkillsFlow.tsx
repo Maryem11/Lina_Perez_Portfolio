@@ -48,13 +48,44 @@ const FlowWithProvider: React.FC = () => {
   // Center the graph after component mounts
   useEffect(() => {
     const centerGraph = () => {
-      // Use the exact coordinates provided by the user
-      const preferredViewport = { x: 223, y: -122.5, zoom: 0.95 };
-      
-      // Set the viewport with a slight delay to ensure React Flow is ready
-      setTimeout(() => {
-        setViewport(preferredViewport, { duration: 800 });
-      }, 100);
+      // Get the container dimensions
+      const container = document.querySelector('.skills-flow-wrapper');
+      if (container) {
+        const containerRect = container.getBoundingClientRect();
+        
+        // Calculate the center of all nodes
+        const nodePositions = nodes.map(node => node.position);
+        const minX = Math.min(...nodePositions.map(pos => pos.x));
+        const maxX = Math.max(...nodePositions.map(pos => pos.x));
+        const minY = Math.min(...nodePositions.map(pos => pos.y));
+        const maxY = Math.max(...nodePositions.map(pos => pos.y));
+        
+        const centerX = (minX + maxX) / 2;
+        const centerY = (minY + maxY) / 2;
+        
+        // Account for the wrapper padding (80px top/bottom, 60px left/right)
+        const paddingLeft = 60;
+        const paddingRight = 60;
+        const paddingTop = 80;
+        const paddingBottom = 80;
+        
+        // Calculate the available space for the graph
+        const availableWidth = containerRect.width - paddingLeft - paddingRight;
+        const availableHeight = containerRect.height - paddingTop - paddingBottom;
+        
+        // Calculate the center of the available space
+        const containerCenterX = paddingLeft + (availableWidth / 2);
+        const containerCenterY = paddingTop + (availableHeight / 2);
+        
+        // Calculate the viewport offset to center the graph
+        const viewportX = containerCenterX - centerX;
+        const viewportY = containerCenterY - centerY;
+        
+        // Set the viewport with a slight delay to ensure React Flow is ready
+        setTimeout(() => {
+          setViewport({ x: viewportX, y: viewportY, zoom: 0.95 }, { duration: 800 });
+        }, 100);
+      }
     };
 
     // Center on mount and after a short delay to ensure everything is rendered
@@ -92,10 +123,42 @@ const FlowWithProvider: React.FC = () => {
 
   const handleResetView = useCallback(() => {
     setNodes(initialNodes);
-    // Reset to the preferred position
+    // Reset to the responsive center position
     setTimeout(() => {
-      const preferredViewport = { x: 223, y: -122.5, zoom: 0.95 };
-      setViewport(preferredViewport, { duration: 800 });
+      const container = document.querySelector('.skills-flow-wrapper');
+      if (container) {
+        const containerRect = container.getBoundingClientRect();
+        
+        // Calculate the center of all nodes
+        const nodePositions = initialNodes.map(node => node.position);
+        const minX = Math.min(...nodePositions.map(pos => pos.x));
+        const maxX = Math.max(...nodePositions.map(pos => pos.x));
+        const minY = Math.min(...nodePositions.map(pos => pos.y));
+        const maxY = Math.max(...nodePositions.map(pos => pos.y));
+        
+        const centerX = (minX + maxX) / 2;
+        const centerY = (minY + maxY) / 2;
+        
+        // Account for the wrapper padding
+        const paddingLeft = 60;
+        const paddingRight = 60;
+        const paddingTop = 80;
+        const paddingBottom = 80;
+        
+        // Calculate the available space for the graph
+        const availableWidth = containerRect.width - paddingLeft - paddingRight;
+        const availableHeight = containerRect.height - paddingTop - paddingBottom;
+        
+        // Calculate the center of the available space
+        const containerCenterX = paddingLeft + (availableWidth / 2);
+        const containerCenterY = paddingTop + (availableHeight / 2);
+        
+        // Calculate the viewport offset to center the graph
+        const viewportX = containerCenterX - centerX;
+        const viewportY = containerCenterY - centerY;
+        
+        setViewport({ x: viewportX, y: viewportY, zoom: 0.95 }, { duration: 800 });
+      }
     }, 100);
   }, [setViewport, setNodes]);
 
