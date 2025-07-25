@@ -22,7 +22,7 @@ import './SkillsFlow.css';
 
 const FlowWithProvider: React.FC = () => {
   const [activeSkill, setActiveSkill] = useState<SkillNodeType['data'] | null>(null);
-  const { fitView, setViewport, getViewport } = useReactFlow();
+  const { fitView } = useReactFlow();
   
   const nodeTypes = useMemo<NodeTypes>(() => ({
     skillNode: (props) => (
