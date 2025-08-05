@@ -143,7 +143,7 @@ const SkillsFlow: React.FC = () => {
           <div className="floating-info-card top-left">
             <div className="card-header">🎓 Education & Experience</div>
             <div className="card-content">
-              MS in Business Analytics from San Francisco State University. 5+ years of experience in data analysis, business intelligence, and predictive modeling across healthcare and e-commerce domains.
+              MS in Business Analytics from San Francisco State University. 5+ years of experience in data analysis, business intelligence, and predictive modeling across finance, healthcare and e-commerce domains.
             </div>
           </div>
           
