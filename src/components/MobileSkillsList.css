@@ -17,6 +17,69 @@
   z-index: 100;
 }
 
+.mobile-header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.mobile-name-section {
+  order: 1;
+}
+
+.mobile-github-link {
+  order: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.mobile-github-link:hover {
+  background: rgba(255, 255, 255, 1);
+  color: #000;
+  border-color: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.4),
+    0 0 0 2px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.mobile-github-link:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.mobile-github-icon {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-github-link:hover .mobile-github-icon {
+  transform: scale(1.1);
+}
+
 .mobile-skills-header h1 {
   margin: 0 0 0.5rem 0;
   color: #E8F5E8;
@@ -287,6 +350,16 @@
   
   .mobile-skills-header p {
     font-size: 0.85rem;
+  }
+  
+  .mobile-github-link {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .mobile-github-icon {
+    width: 22px;
+    height: 22px;
   }
   
   .mobile-info-section,
