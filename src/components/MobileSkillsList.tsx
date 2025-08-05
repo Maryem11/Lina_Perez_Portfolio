@@ -28,7 +28,7 @@ const MobileSkillsList: React.FC = () => {
       <div className="mobile-info-section">
         <div className="mobile-info-card">
           <h3>🎓 Education & Experience</h3>
-          <p>MS in Business Analytics from San Francisco State University. 5+ years of experience in data analysis, business intelligence, and predictive modeling across healthcare and e-commerce domains.</p>
+          <p>MS in Business Analytics from San Francisco State University. 5+ years of experience in data analysis, business intelligence, and predictive modeling across finance, healthcare and e-commerce domains.</p>
         </div>
         
         <div className="mobile-info-card">
