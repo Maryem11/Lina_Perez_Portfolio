@@ -2,6 +2,8 @@
 
 Live site: [linaperezdata.com](https://linaperezdata.com)
 
+Agent handoff and operational history: [docs/PROJECT-STATUS.md](docs/PROJECT-STATUS.md).
+
 A nature-inspired portfolio built with React 19, TypeScript, CSS, and an SVG tree. Seven interactive leaves open skill details and project links. Supporting sections introduce Lina, showcase selected work, and provide a contact form and LinkedIn link.
 
 ## Local development
