@@ -1,112 +1,49 @@
-# 📊 Lina Perez-Romero - Data Analytics Portfolio
+# Lina Perez-Romero — Data Analytics Portfolio
 
-An interactive React Flow-based portfolio showcasing data analytics skills and projects. Built with modern web technologies, featuring a hub-and-spoke visualization with Excel at the center, connecting to various data science and analytics skills.
+Live site: [linaperezdata.com](https://linaperezdata.com)
 
-## 🚀 Live Demo
+A nature-inspired portfolio built with React 19, TypeScript, CSS, and an SVG tree. Seven interactive leaves open skill details and project links. Supporting sections introduce Lina, showcase selected work, and provide a contact form and LinkedIn link.
 
-[GitHub Repository](https://github.com/Maryem11/Lina_Perez_Portfolio)
+## Local development
 
-## ✨ Features
-
-### Core Functionality
-- 🎯 **Interactive Node-based Visualization** - Hub-and-spoke design with Excel as the central skill
-- 📱 **Fully Responsive** - Optimized for desktop, tablet, and mobile devices
-- ♿ **Accessibility First** - WCAG compliant with keyboard navigation and screen reader support
-- 🎨 **Professional Design** - Clean, modern interface with smooth animations
-
-### Skills Showcased
-- **Excel** (11 years) - Central hub connecting all skills
-- **SQL** (8 years) - Database querying and analysis
-- **Python** (5 years) - Data analysis and machine learning
-- **Power BI** (7 years) - Business intelligence dashboards
-- **Statistical Analysis** (5 years) - Data-driven insights
-- **Machine Learning** (3 years) - Predictive modeling
-- **Tableau** (3 years) - Data visualization
-
-### Technical Features
-- 🔧 **TypeScript** - Full type safety
-- ⚛️ **React 19** - Latest React features
-- 🌊 **React Flow** - Interactive node-based visualization
-- 🎭 **Error Boundaries** - Graceful error handling
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/Maryem11/Lina_Perez_Portfolio.git
-cd lina_portfolio
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
+```sh
+npm ci
 npm start
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) to view the portfolio in your browser.
+Open http://localhost:3000. Contact submissions are disabled on localhost and display a preview notice.
 
-## Project Structure
+## Validation
 
-```
-lina_portfolio/
-├── public/
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-├── src/
-│   ├── components/
-│   │   ├── SkillsFlow.tsx      # Main flow component
-│   │   ├── SkillNode.tsx       # Individual skill nodes
-│   │   └── SkillDetailsModal.tsx # Project details modal
-│   ├── data/
-│   │   └── skillsData.ts       # Skills and connections data
-│   ├── types/
-│   │   └── index.ts           # TypeScript type definitions
-│   ├── App.tsx                # Main app component
-│   └── index.tsx              # App entry point
-└── package.json
-```
-
-## Deployment
-
-To build the portfolio for production:
-
-```bash
+```sh
+CI=true npm test -- --watchAll=false
 npm run build
 ```
 
-This will create a `build` folder with optimized production files that can be deployed to any static hosting service like GitHub Pages, Netlify, or Vercel.
+Tests cover skill dialogs, keyboard focus, project links, and contact-form submission states. Layouts were checked in Chromium at mobile and desktop widths; this is not a full accessibility certification.
 
-## Technologies Used
+## Deployment
 
-- React 19
-- TypeScript
-- React Flow
-- CSS3
+Netlify builds the `main` branch using `npm run build` and publishes `build/`. Keep the deployed source committed to this repository before future Git-based deployments.
 
-## About
+The original `public/favicon.ico` is retained. Build output, dependencies, environment files, and local Netlify account state are excluded from Git.
 
-This portfolio showcases the data analytics expertise of Lina Perez-Romero, a Business Analytics graduate from San Francisco State University with over a decade of experience in data analysis, business intelligence, and machine learning.
+## Contact form
 
-## License
+The React form and the hidden form in `public/index.html` must share the `contact` name and field names so Netlify can detect submissions. A honeypot supplements Netlify spam filtering. Recipient notifications are configured in Netlify, not in the public application code. The owner confirmed email delivery after launch.
 
-This project is licensed under the MIT License.
+The existing Free Legacy plan includes 100 verified submissions per site per month. Monitor usage in Netlify; reaching the free limit can pause sites. No paid upgrade was enabled.
 
-## Contact
+## Main files
 
-- GitHub: [@Maryem11](https://github.com/Maryem11)
-- Portfolio Projects:
-  - [Breast Cancer Classification](https://github.com/Maryem11/Breast_Cancer_Classification)
-  - [E-commerce Orders Dashboard](https://github.com/Maryem11/Ecommerce-Orders-Dashboard)
-  - [Tree Classifier](https://github.com/Maryem11/Tree_Classifier)
+- `src/components/SkillsFlow.tsx`: interactive tree
+- `src/components/SkillDetailsModal.tsx`: skill dialog
+- `src/data/skillsData.ts`: skills and shared project records
+- `src/components/ContactForm.tsx`: Netlify form and submission feedback
+- `src/components/ContactLinks.tsx`: contact form and LinkedIn
+- `src/App.tsx`: page sections
+
+## Links
+
+- [LinkedIn](https://www.linkedin.com/in/lina-perez-romero/)
+- [GitHub](https://github.com/Maryem11)
